@@ -18,19 +18,34 @@ const questions = [
         message: 'What is your email?',
     },
     {
-      type: 'input',
-      name: 'title',
-      message: 'What is your project title?',
+        type: 'input',
+        name: 'title',
+        message: 'What is your project title?',
     },
     {
-      type: 'input',
-      name: 'projectDesc',
-      message: 'Enter project description:',
+        type: 'input',
+        name: 'projectDesc',
+        message: 'Enter project description:',
     },
     {
-      type: 'input',
-      name: 'projectInstall',
-      message: 'Enter project Installation requirements:',
+        type: 'input',
+        name: 'projectInstall',
+        message: 'Enter project Installation requirements:',
+    },
+    {
+        type: 'input',
+        name: 'projectUsage',
+        message: 'Enter project Usage Info:',
+    },
+    {
+        type: 'input',
+        name: 'projectContri',
+        message: 'Enter contribution guidelines:',
+    },
+    {
+        type: 'input',
+        name: 'projectTests',
+        message: 'Enter project tests:',
     },
     {
         type: 'list',
@@ -38,30 +53,22 @@ const questions = [
         name: 'license',
         choices: ['MIT', 'AGPL-3.0', 'GPL-3.0', 'LGPL-3.0', 'MPL-2.0', 'APACHE-2.0', 'BSL-1.0', 'UNLICENSE', 'None'],
     },
-    // {
-    //   type: 'input',
-    //   name: 'github',
-    //   message: 'Enter your GitHub Username',
-    // },
-    // {
-    //   type: 'input',
-    //   name: 'linkedin',
-    //   message: 'Enter your LinkedIn URL.',
-    // },
-  ];
+];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+        err ? console.log(err) : console.log('Successfully created index.html!')
+    );
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() { }
 // Function call to initialize app
 inquirer
-  .prompt(questions)
-  .then((answers) => {
-    const readMeData = generateMarkDown(answers);
-    fs.writeFile('README.md', readMeData, (err) =>
-      err ? console.log(err) : console.log('Successfully created index.html!')
-    );
-  });
+    .prompt(questions)
+    .then((answers) => {
+        const readMeData = generateMarkDown(answers);
+        writeToFile('README.md', readMeData);
+    });
 init();

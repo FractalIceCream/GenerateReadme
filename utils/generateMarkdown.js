@@ -28,16 +28,28 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title} 
+  const { githubName, 
+          email, 
+          title, 
+          projectDesc, 
+          projectInstall, 
+          projectUsage,
+          projectContri,
+          projectTests,
+          license } = data;
+  const badge = renderLicenseBadge(license);
+  const link = renderLicenseLink(license);
+  const licenseSection = renderLicenseSection(license);
+  const href = title.toLowerCase().split(' ').join('-');
+
+  return `# ${title} 
   [![license-shield]][license-url]
 
   ## Description
   
-  ${data.projectDesc}
+  ${projectDesc}
   
   ## Table of Contents
-  
-  If your README is long, add a table of contents to make it easy for users to find what they need.
   
   - [Installation](#installation)
   - [Usage](#usage)
@@ -48,46 +60,45 @@ function generateMarkdown(data) {
 
   ## Installation
   
-  ${data.projectInstall}
+  ${projectInstall}
 
-  <p align="right"><a href='#${data.title.toLowerCase()}'>back to top</a></p>
+  <p align="right"><a href='#${href}'>back to top</a></p>
   
   ## Usage
-  
-  Provide instructions and examples for use. Include screenshots as needed.
-  
-  To add a screenshot, create an 'assets/images' folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-  
-  ![alt text](assets/images/screenshot.png)
 
-  <p align="right"><a href='#${data.title.toLowerCase()}'>back to top</a></p>
+  ${projectUsage}
+  
+  <p align="right"><a href='#${href}'>back to top</a></p>
 
   ## License
   
-  ${renderLicenseSection(data.license)}
+  ${licenseSection}
 
-  <p align="right"><a href='#${data.title.toLowerCase()}'>back to top</a></p>
+  <p align="right"><a href='#${href}'>back to top</a></p>
 
   ## How to Contribute
   
-  If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-  <p align="right"><a href='#${data.title.toLowerCase()}'>back to top</a></p>
+  ${projectContri}
+  
+  <p align="right"><a href='#${href}'>back to top</a></p>
   
   ## Tests
 
-  <p align="right"><a href='#${data.title.toLowerCase()}'>back to top</a></p>
+  ${projectTests}
+
+  <p align="right"><a href='#${href}'>back to top</a></p>
 
   ## Questions
 
-  [${data.githubName}'s GitHub](https://github.com/${data.githubName})
+  [${githubName}'s GitHub](https://github.com/${githubName})
 
-  If you have any questions or feedback, reach me @ [${data.email}](https://${data.email}).
+  If you have any questions or feedback, reach me @ [${email}](mailto:${email}).
 
-  <p align="right"><a href='#${data.title.toLowerCase()}'>back to top</a></p>
+  <p align="right"><a href='#${href}'>back to top</a></p>
 
-  [license-shield]: ${renderLicenseBadge(data.license)}
-  [license-url]: ${renderLicenseLink(data.license)}
+  [license-shield]: ${badge}
+  [license-url]: ${link}
+
 `;
 }
 
