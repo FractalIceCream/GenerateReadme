@@ -69,6 +69,6 @@ inquirer
     .prompt(questions)
     .then((answers) => {
         const readMeData = generateMarkDown(answers);
-        writeToFile('README.md', readMeData);
+        writeToFile('../README.md', readMeData);
     });
 init();
