@@ -22,8 +22,9 @@
   
   ## Usage
 
-  ![link video demo here](./demo/appDemoGif.gif)
-  [link video demo here](./demo/appDemo.webm)
+  ![link video demo here](./demo/appDemo.gif)
+
+  [link video demo here](https://drive.google.com/file/d/1TChBOWfMvetGFwtzpj3pba-uwuZY4P2w/view)
   
   <p align="right"><a href='#my-readme-project'>back to top</a></p>
 
